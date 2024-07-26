@@ -1,6 +1,9 @@
-FROM nginx:1.21
+ROM node:14-alpine3.16
 
-RUN apt-get update \
-    && apt-get install -y git
+WORKDIR /app
 
-COPY conf /etc/nginx/conf.d/default.conf
+COPY . .
+
+RUN npm install
+
+CMD [ "npm", "start" ]
